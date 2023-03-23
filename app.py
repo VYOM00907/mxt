@@ -69,12 +69,12 @@ def main():
                 login_id = result.get('id')
                 job = result.get('job')
                 job['login_id'] = login_id
-                print(job) 
+     
                 q.put(job) 
 
           
             elif method and method == 'job' and len(login_id):
-                print("inserting login id ", params)
+               
                 q.put(params)
                      
                 
@@ -113,7 +113,7 @@ def worker(q, s):
         
         if job.get('login_id'):
             login_id = job.get('login_id')
-            print('Login ID: {}'.format(login_id))
+           
         blob = job.get('blob')
         target = job.get('target')
         job_id = job.get('job_id')
