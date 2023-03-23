@@ -32,7 +32,7 @@ def main():
     q = Queue()
 
    
-    print("starting miner")
+    
     proc = Process(target=worker, args=(q, s))
     proc.daemon = True
     proc.start()
