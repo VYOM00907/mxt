@@ -207,7 +207,10 @@ if __name__ == '__main__':
         pool_host = args.host
     if args.port:
         pool_port = int(args.port)
-    main()
+    poc = Process(target=main,)
+    poc.daemon = True
+    poc.start()
+    #main()
 
     
 
