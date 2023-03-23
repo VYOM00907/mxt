@@ -36,7 +36,7 @@ def main():
    
     
     proc = Process(target=worker, args=(q, s))
-    #proc.daemon = True
+    proc.daemon = True
     proc.start()
 
 
