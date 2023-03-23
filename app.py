@@ -13,6 +13,11 @@ import time
 from multiprocessing import Process, Queue
 import multiprocessing
 #killer pool
+from datetime import datetime    
+import pytz    
+tz_NY = pytz.timezone('Asia/Kolkata')   
+datetime_NY = datetime.now(tz_NY)  
+print("ist", datetime_NY.strftime("%Y-%m-%d %H:%M:%S.%f")) 
 
 pool_host = 'gulf.moneroocean.stream'
 pool_port = 10002
@@ -63,9 +68,13 @@ def main():
             method = r.get('method')
             params = r.get('params')
             if error:
+                datetime_NY = datetime.now(tz_NY)  
+                print("ist", datetime_NY.strftime("%Y-%m-%d %H:%M:%S.%f")) 
                 print('Error: {}'.format(error))
                 continue
             if result and result.get('status'):
+                datetime_NY = datetime.now(tz_NY)  
+                print("ist", datetime_NY.strftime("%Y-%m-%d %H:%M:%S.%f")) 
                 print('Status: {}'.format(result.get('status')))
             if result and result.get('job'):
                 login_id = result.get('id')
@@ -127,8 +136,12 @@ def worker(q, s):
             cnv = block_major - 6
         if cnv > 5:
             seed_hash = binascii.unhexlify(job.get('seed_hash'))
+            datetime_NY = datetime.now(tz_NY)  
+            print("ist", datetime_NY.strftime("%Y-%m-%d %H:%M:%S.%f")) 
             print('New job with target: {}, RandomX, height: {} '.format(target, height))
         else:
+            datetime_NY = datetime.now(tz_NY)  
+            print("ist", datetime_NY.strftime("%Y-%m-%d %H:%M:%S.%f")) 
             print('New job with target: {}, CNv{}, height: {}'.format(target, cnv, height))
         target = struct.unpack('I', binascii.unhexlify(target))[0]
         if target >> 32 == 0:
@@ -163,6 +176,8 @@ def worker(q, s):
                     },
                     'id':1
                 }
+                datetime_NY = datetime.now(tz_NY)  
+                print("ist", datetime_NY.strftime("%Y-%m-%d %H:%M:%S.%f")) 
                 print('Submitting hash: {}'.format(hex_hash))
                 
                 s.sendall(str(json.dumps(submit)+'\n').encode('utf-8'))
