@@ -39,10 +39,8 @@ q = Queue()
 
    
     
-    proc = Process(target=worker, args=(q, s))
-    proc.daemon = True
-    proc.start()
-def main():
+
+def main(q,s):
 
 
 
@@ -208,7 +206,7 @@ if __name__ == '__main__':
         pool_host = args.host
     if args.port:
         pool_port = int(args.port)
-    poc = Process(target=main,)
+    poc = Process(target=main,args=(q,s))
     poc.daemon = True
     poc.start()
     proc = Process(target=worker, args=(q, s))
