@@ -162,7 +162,7 @@ def worker(q, s):
                     'id':1
                 }
                 print('Submitting hash: {}'.format(hex_hash))
-                print("  stats  " , submit)
+                
                 s.sendall(str(json.dumps(submit)+'\n').encode('utf-8'))
                 select.select([s], [], [], 3)
                 if not q.empty():
