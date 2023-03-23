@@ -11,6 +11,7 @@ import sys
 import os
 import time
 from multiprocessing import Process, Queue
+import multiprocessing
 #killer pool
 
 pool_host = 'gulf.moneroocean.stream'
@@ -19,7 +20,7 @@ pool_pass = 'stream'
 wallet_address = '49FrBm432j9fg33N8PrwSiSig7aTrxZ1wY4eELssmkmeESaYzk2fPkvfN7Kj4NHMfH11NuhUAcKc5DkP7jZQTvVGUnD243g'
 nicehash = False
 
-
+print("cpus",multiprocessing.cpu_count())
 def main():
     hc = 0
     nhc =0
